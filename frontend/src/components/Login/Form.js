@@ -26,12 +26,11 @@ const Form = () => {
         try{
             const res = await ApiManager.call('login',{ email, password } )
             const data = await res.json();
-            console.log(data)
             if(data.errors) {
                 setErrorsEmail(data.errors.email);
                 setErrorsPassword(data.errors.password);
             }
-            if(data.active === false){
+            else if(data.active === false){
                 Toast.toastMessage('You need to confirm your email address by clicking the activation link we sent to your e-mail', 'warn')
             }
             else{

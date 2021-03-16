@@ -12,6 +12,7 @@ import InputWrapper from '../../styledComponents/InputWrapper';
 import Span from '../../styledComponents/Span';
 import Paragraph from '../../styledComponents/Paragraph';
 import { SET_GUEST_STATE } from '../../actions/index';
+require('dotenv').config()
 
 
 const Form = () => {
@@ -23,6 +24,7 @@ const Form = () => {
     
 
     const onSubmit = async ({ email, password, confirmpassword }) => {
+        console.log(process.env.REACT_APP_BACKEND_URL)
         if(password !== confirmpassword){
             Toast.toastMessage('Passwords are not the same', 'error')
         }
